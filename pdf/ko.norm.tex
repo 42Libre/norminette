@@ -158,7 +158,9 @@
 
                 \item Control structures (if, while..) must have braces, unless they contain a single 
                     line or a single condition.
-
+                
+                \item Braces following functions, declarators or control structures must be preceded and followed by a newline.
+                
             \end{itemize}
 
             \newpage
@@ -328,11 +330,11 @@ struct	s_struct;
 
                 \end{itemize}
 
-            \item Ternary operators such as `?'.
+            \item `?'과 같은 삼항 연산자.
 
-            \item VLAs - Variable Length Arrays.
+            \item 가변 길이 배열(VLA).
 
-            \item Implicit type in variable declarations
+            \item 자료형을 명시하지 않은 변수 선언
 
         \end{itemize}
         \begin{42ccode}
@@ -371,7 +373,7 @@ struct	s_struct;
 
         \begin{itemize}
 
-            \item .c 파일을 인쿨루드할 수 없습니다.
+            \item .c 파일을 인클루드할 수 없습니다.
 
             \item 하나의 .c 파일에 5개보다 많은 함수 정의를 포함할 수 없습니다.
 
@@ -384,27 +386,24 @@ struct	s_struct;
 %******************************************************************************%
     \section{Makefile}
 
-            Makefiles aren't checked by the Norm, and must be checked during evaluation by 
-            the student.
+            Makefile은 Norm에서 확인하지 않으며, 반드시 학생이 평가 중에 확인해야 합니다.
             \begin{itemize}
 
-                \item The \$(NAME), clean, fclean, re and all
-                  rules are mandatory.
+                \item 다음 규칙은 필수적입니다. \$(NAME), clean, fclean, re and all
 
-                \item If the makefile relinks, the project will be considered
-                  non-functional.
+                \item makefile이 리링크(relink)되면, 프로젝트는 작동하지 않는 것으로 간주됩니다.
 
-                \item In the case of a multibinary project, in addition to
+                \item 실행파일이 여러개인 프로젝트의 경우, in addition to
                   the above rules, you must have a rule that compiles
                   both binaries as well as a specific rule for each
                   binary compiled.
 
-                  \item In the case of a project that calls a function from a non-system library
-                  (e.g.: \texttt{libft}), your makefile must compile
-                  this library automatically.
+                  \item 비시스템 라이브러리에서 함수를 호출하는 프로젝트의 경우
+                  (예: \texttt{libft}), makefile은 반드시 이 라이브러리를 자동으로
+                  컴파일해야 합니다.
 
-                  \item All source files you need to compile your project must
-                    be explicitly named in your Makefile.
+                  \item 프로젝트를 컴파일하기 위해 필요한 모든 소스파일들은 
+                    Makefile에 반드시 명시해야 합니다.
 
             \end{itemize}
 
