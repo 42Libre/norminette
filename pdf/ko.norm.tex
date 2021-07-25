@@ -290,29 +290,26 @@ struct	s_struct;
         \newpage
 
 %******************************************************************************%
-%                           Macros and Pre-processors                          %
+%                               매크로와 전처리기                               %
 %******************************************************************************%
-    \section{Macros and Pre-processors}
+    \section{매크로와 전처리기}
 
         \begin{itemize}
 
-            \item Preprocessor constants (or \#define) you create must be used
-                only for literal and constant values.
-            \item All \#define created to bypass the norm and/or obfuscate
-                code are forbidden. This part must be checked by a human.
-            \item You can use macros available in standard libraries, only
-                if those ones are allowed in the scope of the given project.
-            \item Multiline macros are forbidden.
-            \item Macro names must be all uppercase.
-            \item You must indent characters following \#if, \#ifdef
-                or \#ifndef.
+            \item 매크로 상수(또는 #define)는 리터럴이나 상수에만 사용 가능합니다.
+            \item norm을 우회하거나 코드의 가독성을 낮추는 모든 #define은 금지됩니다.
+                이 부분은 사람에 의해 검사되어야 합니다.
+            \item 표준 라이브러리의 매크로는 프로젝트에서 사용이 허가되었을 경우에만 사용 가능합니다.
+            \item 여러 줄에 걸친 매크로는 금지됩니다.
+            \item 매크로 이름은 모두 대문자여야 합니다.
+            \item #if, #ifdef, #ifndef 다음에 나오는 구문들은 들여쓰기해야 합니다.
 
         \end{itemize}
         \newpage
 
 
 %******************************************************************************%
-%                              금지 사항!                                %
+%                                  금지 사항!                                  %
 %******************************************************************************%
     \section{금지 사항!}
 
@@ -393,10 +390,9 @@ struct	s_struct;
 
                 \item makefile이 리링크(relink)되면, 프로젝트는 작동하지 않는 것으로 간주됩니다.
 
-                \item 실행파일이 여러개인 프로젝트의 경우, in addition to
-                  the above rules, you must have a rule that compiles
-                  both binaries as well as a specific rule for each
-                  binary compiled.
+                \item 실행 파일이 여러개인 프로젝트의 경우, 위의 규칙 외에도
+                  컴파일된 각각의 실행 파일에 대한 특정 규칙 뿐만 아니라, 실행 파일들을 
+                  모두 컴파일하는 규칙이 있어야 합니다.
 
                   \item 비시스템 라이브러리에서 함수를 호출하는 프로젝트의 경우
                   (예: \texttt{libft}), makefile은 반드시 이 라이브러리를 자동으로
