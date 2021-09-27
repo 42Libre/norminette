@@ -110,7 +110,8 @@ misc_specifiers = [
     "VOLATILE",
     "EXTERN",
     "INLINE",
-    "RESTRICT" "SIGNED",
+    "RESTRICT",
+    "SIGNED",
     "UNSIGNED",
 ]
 
@@ -185,6 +186,18 @@ class Context:
             return False
 
         return tkn.type == value
+
+    def find_in_scope(self, value, nested=True):
+        nests = 0
+        for i in range(0, self.tkn_scope):
+            tkn = self.peek_token(i)
+            if self.check_token(i, ["LBRACKET", "LPARENTHESIS", "LBRACE"]) is True:
+                nests += 1
+            if self.check_token(i, ["RBRACKET", "RPARENTHESIS", "RBRACE"]) is True:
+                nests -= 1
+            if tkn.type == value and (nested == True or (nests == 0 and nested == False)):
+                return i
+        return -1
 
     def new_error(self, errno, tkn):
         self.errors.append(NormError(errno, tkn.pos[0], tkn.pos[1]))
@@ -377,8 +390,11 @@ In \"{self.scope.name}\" from \
                 return True, i + 1
             while self.check_token(i, types + whitespaces + ["MULT", "BWISE_AND"]) is True:
                 i += 1
-            i = self.skip_misc_specifier(i, nl=nl)
-            return True, i
+            tmp = self.skip_misc_specifier(i, nl=nl)
+            if tmp == i:
+                return True, i - 1
+            else:
+                return True, tmp
 
     def check_identifier(self, pos, nl=False):
         """
@@ -469,6 +485,8 @@ In \"{self.scope.name}\" from \
             if self.check_token(pos, ["RBRACKET", "RPARENTHESIS"]) is True:
                 value_before = True
                 pos = self.skip_nest_reverse(pos) - 1
+                if self.check_token(pos + 1, "LPARENTHESIS") is True and self.parenthesis_contain(pos + 1)[0] == "variable":
+                    return True
                 if self.check_token(pos + 1, "LPARENTHESIS") is True and self.parenthesis_contain(pos + 1)[0] == "cast":
                     return False
                 skip = 1
@@ -476,7 +494,7 @@ In \"{self.scope.name}\" from \
                 if self.check_token(pos, "IDENTIFIER") is True and self.check_token(pos + 1, "TAB") is True:
                     return False
                 return True
-            if self.check_token(pos, ["COMMA", "LPARENTHESIS"] + operators) is True and skip == 1 and self.parenthesis_contain(pos + 1)[0] != "cast":
+            if self.check_token(pos, ["COMMA", "LPARENTHESIS", "LBRACKET"] + operators) is True and skip == 1 and self.parenthesis_contain(pos + 1)[0] != "cast":
                 return True
             if self.check_token(pos, ["LBRACKET", "LPARENTHESIS", "MULT", "BWISE_AND", "COMMA"] + operators + types):
                 return False
@@ -518,6 +536,10 @@ In \"{self.scope.name}\" from \
                 return "fct_call", self.skip_nest(start)
             elif self.check_token(i, "COMMA") and nested_id == True:
                 return "function", self.skip_nest(start)
+            elif self.check_token(i, assigns) and deep == 1:
+                return "assign", self.skip_nest(start)
+            elif self.check_token(i, "PTR") and deep == 1:
+                return "variable", self.skip_nest(start)
             elif self.check_token(i, "COMMA"):
                 return None, self.skip_nest(start)
             elif self.check_token(i, ws):
@@ -542,7 +564,7 @@ In \"{self.scope.name}\" from \
                 if identifier is not True and self.check_token(tmp, "RPARENTHESIS") and self.scope.name == "Function" and deep == 1 and pointer == None and sizeof == False:
                     tmp = self.skip_nest(start) + 1
                     tmp = self.skip_ws(tmp)
-                    if self.check_token(tmp, "IDENTIFIER") is False:
+                    if self.check_token(tmp, ["IDENTIFIER", "CONSTANT", "MINUS", "PLUS"]) is False:
                         return None, self.skip_nest(start)
                     return "cast", self.skip_nest(start)
                 identifier = True

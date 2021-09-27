@@ -11,6 +11,7 @@ errors = {
     "NO_SPC_AFR_PAR": "Extra space after parenthesis (brace/bracket)",
     "NO_SPC_BFR_PAR": "Extra space before parenthesis (brace/bracket)",
     "SPC_AFTER_POINTER": "space after pointer",
+    "SPC_LINE_START": "Unexpected space/tab at line start",
     "SPC_BFR_POINTER": "bad spacing before pointer",
     "SPACE_BEFORE_FUNC": "space before function name",
     "TOO_MANY_TABS_FUNC": "extra tabs before function name",
@@ -93,6 +94,8 @@ digits or '_'",
     "COMMENT_ON_INSTR": "Comment must be on its own line",
     "COMMA_START_LINE": "Comma at line start",
     "MIXED_SPACE_TAB": "Mixed spaces and tabs",
+    "ATTR_EOL": "Function attribute must be at the end of line",
+    "INVALID_HEADER": "Missing or invalid 42 header",
 }
 
 
