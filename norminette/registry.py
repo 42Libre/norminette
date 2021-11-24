@@ -19,6 +19,8 @@ class Registry:
         self.dependencies = {}
         for k, r in self.rules.items():
             r.register(self)
+        for k, v in self.dependencies.items():
+            self.dependencies[k] = sorted(self.dependencies[k], reverse=True)
 
     def run_rules(self, context, rule):
         if rule.name.startswith("Is"):
@@ -88,6 +90,9 @@ class Registry:
             print(context.filename + ": OK!")
         else:
             print(context.filename + ": Error!")
-            context.errors = sorted(context.errors, key=cmp_to_key(sort_errs))
+            context.errors = sorted(context.errors + context.warnings, key=cmp_to_key(sort_errs))
             for err in context.errors:
                 print(err)
+            # context.warnings = sorted(context.warnings, key=cmp_to_key(sort_errs))
+            # for warn in context.warnings:
+            #     print (warn)

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from norminette.lexer import Lexer
 from norminette.rules import Rule
 from norminette.scope import GlobalScope, Function
@@ -42,14 +44,18 @@ class CheckPreprocessorDefine(Rule):
                 pass
             else:
                 context.new_error("PREPROC_GLOBAL", context.peek_token(0))
-        if context.check_token(i, "DEFINE") is False:
+        if context.check_token(i, "DEFINE") is True:
+            val = context.peek_token(i).value.split("define", 1)[1]
+        elif context.check_token(i, "IFNDEF") is True:
+            val = context.peek_token(i).value.split("ifndef", 1)[1]
+        else:
             return False, 0
-        val = context.peek_token(i).value.split("define", 1)[1]
         content = Lexer(val, context.peek_token(i).pos[0])
         tkns = content.get_tokens()
         i = 0
         identifiers = []
-        protection = context.filename.upper().split("/")[-1].replace(".", "_")
+        # protection = context.filename.upper().split("/")[-1].replace(".", "_")
+        protection = Path(context.filename).name.upper().replace(".", "_")
         for tkn in tkns:
             if tkn.type == "ESCAPED_NEWLINE":
                 context.new_error("NEWLINE_DEFINE", tkn)
@@ -116,8 +122,7 @@ class CheckPreprocessorDefine(Rule):
                 if context.skip_define_error == True:
                     continue
                 context.new_error("PREPROC_CONSTANT", tkn)
-
             i += 1
         if context.filetype == "h" and context.scope.header_protection != 1:
-            context.new_error("HEADER_PROT_ALL", context.peek_token(0))
+            context.new_error("HEADER_PROT_ALL_2", context.peek_token(i))
         return False, 0
