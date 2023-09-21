@@ -1,0 +1,16 @@
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 1":
+		<HASH> <IDENTIFIER=define> <SPACE> <IDENTIFIER=STUFF> <SPACE> <CONSTANT=1> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 2":
+		<HASH> <IDENTIFIER=ifndef> <SPACE> <IDENTIFIER=FOO> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 3":
+		<HASH> <SPACE> <IDENTIFIER=define> <SPACE> <IDENTIFIER=FOO> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 4":
+		<HASH> <SPACE> <IDENTIFIER=ifndef> <SPACE> <IDENTIFIER=BAR> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 5":
+		<HASH> <SPACE> <SPACE> <IDENTIFIER=define> <SPACE> <IDENTIFIER=BAR> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 6":
+		<HASH> <SPACE> <IDENTIFIER=endif> <NEWLINE>
+[36mok_preproc_indent.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 7":
+		<HASH> <IDENTIFIER=endif> <NEWLINE>
+ok_preproc_indent.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header

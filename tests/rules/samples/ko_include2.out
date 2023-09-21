@@ -1,0 +1,22 @@
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 1":
+		<HASH> <IDENTIFIER=include> <STRING="libft.h"> <NEWLINE>
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 2":
+		<HASH> <IDENTIFIER=include> <TAB> <STRING="libft.h"> <NEWLINE>
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 3":
+		<HASH> <IDENTIFIER=include> <TAB> <TAB> <STRING="libft.h"> <NEWLINE>
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 4":
+		<HASH> <IDENTIFIER=include> <LESS_THAN> <IDENTIFIER=unistd> <DOT> <IDENTIFIER=h> <MORE_THAN> <NEWLINE>
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 5":
+		<HASH> <IDENTIFIER=include> <TAB> <LESS_THAN> <IDENTIFIER=unistd> <DOT> <IDENTIFIER=h> <MORE_THAN> <NEWLINE>
+[36mko_include2.c[0m - [32mIsPreprocessorStatement[0m In "GlobalScope" from "None" line 6":
+		<HASH> <IDENTIFIER=include> <TAB> <TAB> <LESS_THAN> <IDENTIFIER=unistd> <DOT> <IDENTIFIER=h> <MORE_THAN> <NEWLINE>
+ko_include2.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: PREPROC_NO_SPACE     (line:   1, col:   9):	Missing space after preprocessor directive
+Error: TAB_REPLACE_SPACE    (line:   2, col:   9):	Found tab when expecting space
+Error: CONSECUTIVE_WS       (line:   3, col:   9):	Two or more consecutives white spaces
+Error: TAB_REPLACE_SPACE    (line:   3, col:   9):	Found tab when expecting space
+Error: PREPROC_NO_SPACE     (line:   4, col:   9):	Missing space after preprocessor directive
+Error: TAB_REPLACE_SPACE    (line:   5, col:   9):	Found tab when expecting space
+Error: CONSECUTIVE_WS       (line:   6, col:   9):	Two or more consecutives white spaces
+Error: TAB_REPLACE_SPACE    (line:   6, col:   9):	Found tab when expecting space
