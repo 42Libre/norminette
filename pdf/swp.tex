@@ -4,7 +4,7 @@
 
 %******************************************************************************%
 %                                                                              %
-%                                    프롤로그                                    %
+%                                   프롤로그                                   %
 %                                                                              %
 %******************************************************************************%
 
@@ -28,7 +28,7 @@
 
 %******************************************************************************%
 %                                                                              %
-%                                     머리말                                     %
+%                                     머리말                                   %
 %                                                                              %
 %******************************************************************************%
 \chapter{머리말}
@@ -42,7 +42,7 @@
 
 %******************************************************************************%
 %
-%                                   교육적 설명                                   %
+%                                   교육적 설명                                 %
 %
 %******************************************************************************%
     \chapter{Why ?}
@@ -76,10 +76,10 @@
       시장에서 성공적인 제품을 가지고 있는 것에 대해 말할 때 차이를 만들 수 있습니다. 그렇게 하는 법은
       빨리 배울수록 좋습니다.
 
-    \item 표준: 당신은 Norm에 포함된 어떤 규칙이나 모든 규칙이 임의적이라고 생각할 수도 있지만, 우리는 실제로 무엇을 어떻게
-      해야 할지 생각하고 읽었습니다. 우리는 왜 함수가 짧고 한 가지 일만 해야 하는지, 왜 변수 이름이 의미가 있어야
-      하는지, 왜 줄 너비가 80열을 넘지 않아야 하는지, 왜 함수가 많은 매개 변수를 사용하지 않아야 하는지, 왜 주석이
-      유용해야 하는지 등을 검색하는 것을 강력히 권장합니다.
+    \item 표준: 당신은 어떤 규칙이나 모든 규칙이 임의적이라고 생각할 수도 있지만, 우리는 실제로 무엇을 어떻게
+      해야 할지 생각하고 읽었습니다. 우리는 왜 함수가 짧고 한 가지 일만 해야 하는지, 변수 이름이 의미가 있어야
+      하는지, 줄 너비가 80열을 넘지 않아야 하는지, 함수가 많은 매개 변수를 사용하지 않아야 하는지, 주석이
+      유용해야 하는 이유 등을 구글에서 검색하는 것을 강력히 권장합니다.
 
     \end{itemize}
 
@@ -95,7 +95,7 @@
 
 
 %******************************************************************************%
-%                                   명명 규칙                                    %
+%                                   명명 규칙                                  %
 %******************************************************************************%
     \section{명명}
 
@@ -111,7 +111,7 @@
 
             \item 전역 변수의 이름은 \texttt{g\_} 로 시작해야만 합니다.
 
-            \item 변수와 함수의 이름에는 소문자, 숫자 및
+            \item 파일 및 디렉터리의 이름에는 소문자, 숫자 및
                 '\_' (snake\_case)만이 포함될 수 있습니다.
 
             \item 파일 및 디렉터리의 이름에는 소문자, 숫자 및
@@ -136,7 +136,7 @@
 \newpage
 
 %******************************************************************************%
-%                                     서식                                      %
+%                                     서식                                     %
 %******************************************************************************%
     \section{서식}
 
@@ -224,26 +224,29 @@ int     main(void)
             \newpage
 
 %******************************************************************************%
-%                                  함수 매개변수                                  %
+%                              Function parameters                             %
 %******************************************************************************%
-    \section{함수}
+    \section{Functions}
 
         \begin{itemize}
 
-            \item 한 함수에는 최대 4개의 명명된 매개변수를 가질 수 있습니다.
+            \item A function can take 4 named parameters maximum.
 
-            \item 인자를 받지 않는 함수는 "void"라는 단어를 인자로
-			    명시적으로 프로토타입 되어야만 합니다.
+            \item A function that doesn't take arguments must be
+                explicitly prototyped with the word "void" as the
+                argument.
 
-            \item 함수 프로토타입 안의 매개변수는 명명되어야만 합니다.
+            \item Parameters in functions' prototypes must be named.
 
-            \item 각 함수는 빈 줄로 다음 함수와 구분되어야만 합니다.
+            \item Each function must be separated from the next by
+                an empty line.
 
-            \item 각 함수는 5개를 초과하는 변수를 선언할 수 없습니다.
+            \item You can't declare more than 5 variables per function.
 
-            \item 함수의 반환은 소괄호 사이에 있어야 합니다.
+            \item Return of a function has to be between parenthesis.
 
-            \item 각 함수는 반환 형식과 이름 사이에 한 번의 탭 들여쓰기가 있어야만 합니다.
+            \item Each function must have a single tabulation between its
+                return type and its name.
 
             \begin{42ccode}
 int my_func(int arg1, char arg2, char *arg3)
@@ -262,54 +265,52 @@ int func2(void)
 
 
 %******************************************************************************%
-%                           자료형, 구조체, 열거형, 공용체                            %
+%                        Typedef, struct, enum and union                       %
 %******************************************************************************%
-    \section{자료형, 구조체, 열거형, 공용체}
+    \section{Typedef, struct, enum and union}
 
         \begin{itemize}
 
-            \item 구조체, 열거형, 공용체를 선언할 때는 탭 들여쓰기를 추가합니다.
+            \item Add a tabulation when declaring a struct, enum or union.
 
-            \item 구조체, 열거형, 공용체 타입의 변수를 선언할 때는
-			    해당 자료형 뒤에 하나의 공백 문자를 추가합니다.
-			When declaring a variable of type struct, enum or union,
+            \item When declaring a variable of type struct, enum or union,
                 add a single space in the type.
 
-            \item 구조체, 열거형, 공용체를 typedef와 함께 선언할 때는
-			    모든 들여쓰기 규칙이 적용됩니다.
+            \item When declaring a struct, union or enum with a typedef,
+                all indentation rules apply.
 
-            \item typedef 이름 앞에는 탭이 있어야만 합니다.
+            \item Typedef name must be preceded by a tab.
 
-            \item 모든 구조체의 이름은 해당 스코프의 같은 열에 들여쓰기해야만 합니다.
+            \item You must indent all structures' names on the same column for their scope.
 
-            \item .c 파일 내에서 구조체를 선언할 수 없습니다.
+            \item You cannot declare a structure in a .c file.
 
         \end{itemize}
         \newpage
 
 
 %******************************************************************************%
-%                                      헤더                                     %
+%                                   Headers                                    %
 %******************************************************************************%
-    \section{헤더 - a.k.a 파일 포함하기}
+    \section{Headers - a.k.a include files}
 
         \begin{itemize}
 
-            \item 헤더파일에서 허용되는 것들:
-			    헤더 인클루드(시스템 헤더 또는 유저 헤더),
-			    선언, 정의, 프로토타입과 매크로.
+            \item The things allowed in header files are:
+                header inclusions (system or not), declarations, defines,
+                prototypes and macros.
 
-            \item 모든 인클루드는 파일의 시작에 작성되어야만 합니다.
+            \item All includes must be at the beginning of the file.
 
-            \item C 파일을 인클루드할 수 없습니다.
+            \item You cannot include a C file.
 
-            \item 헤더 파일은 중복 인클루드를 방지해야만 합니다.
-			만약 파일 이름이 \texttt{ft\_foo.h}이라면,
-			인클루드 가드 매크로는 \texttt{FT\_FOO\_H}입니다.
+            \item Header files must be protected from double inclusions. If the file is
+            \texttt{ft\_foo.h}, its bystander macro is \texttt{FT\_FOO\_H}.
 
-            \item 사용하지 않은 헤더의 인클루드는 금지됩니다.
+            \item Unused header inclusions (.h) are forbidden.
 
-            \item .c / .h 파일의 모든 헤더 인클루드는 정당한 이유가 있어야만 합니다.
+            \item All header inclusions must be justified in a .c file
+                as well as in a .h file.
 
         \end{itemize}
 
@@ -329,17 +330,18 @@ struct	s_struct;
 
 
 %******************************************************************************%
-%                                    42 헤더                                    %
+%                                 The 42 header                                %
 %******************************************************************************%
 
    \section{The 42 header - a.k.a start a file with style}
 
         \begin{itemize}
 
-        \item 모든 .c 및 .h 파일은 즉시 표준 42 헤더로 시작해야 합니다. : 유용한 정보를
-		  포함하는 특별한 형식의 멀티 라인 주석. 표준 헤더는 다양한 텍스트 편집기를 위해
-		  클러스터의 컴퓨터에서 자연스럽게 사용할 수 있습니다. (emacs : \texttt{C-c C-h} 입력, 
-		  vim : \texttt{:Stdheader} 또는 \texttt{F1}, 등...).
+        \item Every .c and .h file must immediately begin with the standard 42 header :
+          a multi-line comment with a special format including useful informations. The
+          standard header is naturally available on computers in clusters for various
+          text editors (emacs : using \texttt{C-c C-h}, vim using \texttt{:Stdheader} or
+          \texttt{F1}, etc...).
 
         \item The 42 header must contain several informations up-to-date, including the
           creator with login and email, the date of creation, the login and date of the
